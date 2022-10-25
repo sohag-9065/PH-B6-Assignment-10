@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
 import imageUpload from '../../js/imageUpload';
+import SocialLogin from './SocialLogin';
 
 const SignUp = () => {
     const { createUser, updateNameImage, verifyEmail } = useContext(AuthContext);
@@ -57,6 +58,7 @@ const SignUp = () => {
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="card flex-shrink-0 w-full min-w-[400px] shadow-2xl bg-base-100">
                     <div className="card-body">
+                        <h1 className='text-2xl text-center font-semibold'>Sign Up</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
@@ -135,6 +137,10 @@ const SignUp = () => {
                             <input type="submit" className='btn mt-6' value="Sign Up" />
                         </form>
                         <p className='text-xs'>Already have an account? <Link to="/login" className=' text-secondary cursor-pointer'>Please Login</Link></p>
+
+                        <div className="divider mb-0">OR</div>
+
+                        <SocialLogin from={from}></SocialLogin>
                     </div>
                 </div>
             </div>

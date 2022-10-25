@@ -1,5 +1,6 @@
 import Main from "../layout/Main.jsx";
 import Blog from "../pages/Blog/Blog.jsx";
+import Courses from "../pages/Courses/Courses.jsx";
 import Home from "../pages/Home/Home.jsx";
 import Login from "../pages/Login/Login.jsx";
 import SignUp from "../pages/Login/SignUp.jsx";
@@ -25,11 +26,7 @@ const router =  createBrowserRouter([
             },
             {
                 path: "courses",
-                element: <Home></Home>
-            },
-            {
-                path: "faq",
-                element: <Home></Home>
+                element: <Courses></Courses>
             },
             {
                 path: "blog",

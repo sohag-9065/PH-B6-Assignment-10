@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const [userEmail, setUserEmail] = useState('')
@@ -35,11 +36,15 @@ const Login = () => {
             })
             .catch(error => toast.error(error.message))
     }
+
+
+    
     return (
         <div className="hero min-h-[90vh] bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="card flex-shrink-0 w-full min-w-[400px] shadow-2xl bg-base-100">
                     <div className="card-body">
+                        <h1 className='text-2xl text-center font-semibold'>Login</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -50,7 +55,7 @@ const Login = () => {
                                 placeholder='Email'
                                 {...register("email",
                                     {
-                                        onChange: (event) => {setUserEmail(event.target.value)},
+                                        onChange: (event) => { setUserEmail(event.target.value) },
                                         required: "Email Address is required",
                                         pattern: {
                                             value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
@@ -96,6 +101,10 @@ const Login = () => {
                             </button>
                         </div>
                         <p className='text-xs'>New to Warehouse? <Link to="/sign-up" className=' text-secondary cursor-pointer'>Create new account</Link></p>
+
+                        <div className="divider mb-0">OR</div>
+
+                        <SocialLogin from={from}></SocialLogin>
                     </div>
                 </div>
             </div>

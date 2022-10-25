@@ -27,7 +27,6 @@ const Header = () => {
     const menuItems = <>
         <li><NavLink to="/home" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Home</NavLink></li>
         <li><NavLink to="/courses" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Courses</NavLink></li>
-        <li><NavLink to="/faq" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>FAQ</NavLink></li>
         <li><NavLink to="/blog" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Blog</NavLink></li>
         {
             user ?
@@ -35,13 +34,13 @@ const Header = () => {
                     {
                         user.photoURL ?
                             <>
-                                <div className="dropdown dropdown-hover dropdown-end px-2">
+                                <div className="dropdown dropdown-hover dropdown-end px-2 ">
                                     <div tabIndex={0} className="avatar m-1">
                                         <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-6">
                                             <img src={user?.photoURL} alt="" />
                                         </div>
                                     </div>
-                                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                    <ul tabIndex={0} className="dropdown-content menu  p-2 shadow bg-stone-300 rounded-box w-52">
                                         <li ><Link className="w-full">{user?.displayName}</Link></li>
                                         <li> <Link onClick={handleLogout} className="w-full" >Sign Out</Link></li>
                                     </ul>
@@ -60,13 +59,11 @@ const Header = () => {
             dark ?
                 <div>
                     
-                    <li onClick={() => setDark(!dark)}><button className="btn btn-outline btn-ghost"><FontAwesomeIcon icon={faMoon} /></button></li>
+                    <li onClick={() => setDark(!dark)}><button className="btn btn-outline btn-ghost ml-4"><FontAwesomeIcon icon={faMoon} /></button></li>
                 </div>
 
-
                 :
-
-                <li onClick={() => setDark(!dark)}><button className="btn btn-outline btn-ghost"><FontAwesomeIcon icon={faSun} /></button></li>
+                <li onClick={() => setDark(!dark)}><button className="btn btn-outline btn-ghost ml-4"><FontAwesomeIcon icon={faSun} /></button></li>
         }
 
     </>

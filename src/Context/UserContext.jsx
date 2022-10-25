@@ -1,10 +1,13 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GithubAuthProvider,
+  GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from 'firebase/auth'
@@ -15,7 +18,8 @@ const auth = getAuth(app)
 export const AuthContext = createContext()
 
 const UserContext = ({ children }) => {
-
+  const googleProvider = new GoogleAuthProvider()
+  const githubProvider = new GithubAuthProvider();
   const [user, setUser] = useState({})
   const [loadingUser, setLoadingUser] = useState(true)
 
@@ -55,6 +59,23 @@ const UserContext = ({ children }) => {
     return sendPasswordResetEmail(auth, email)
   }
 
+   // 7. Google Signin
+
+   const signInWithGoogle = () => {
+    setLoadingUser(true)
+    return signInWithPopup(auth, googleProvider)
+  }
+
+
+   // 7. Google Signin
+
+   const signInWithGithub = () => {
+    setLoadingUser(true)
+    return signInWithPopup(auth, githubProvider)
+  }
+
+  
+
 
   useEffect(() => {
     //this part will execute once the component is mounted.
@@ -79,6 +100,8 @@ const UserContext = ({ children }) => {
     logout,
     resetPassword,
     verifyEmail,
+    signInWithGoogle,
+    signInWithGithub
   }
 
   return (
