@@ -1,32 +1,40 @@
-import React, { useContext} from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
 
 const Login = () => {
-
+    const [userEmail, setUserEmail] = useState('')
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
+    const { signin, resetPassword } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
-    const { signin  } = useContext(AuthContext)
+    console.log(userEmail);
 
     const onSubmit = data => {
         const { email, password } = data;
-         
-
+        // sign in user with email and pass 
         signin(email, password)
             .then(result => {
-                toast.success('Login Success!')
-                navigate(from, { replace: true })
-                console.log(result.user)
+                toast.success('Login Success!');
+                navigate(from, { replace: true });
+                // console.log(result.user);
             })
-            .catch(error => console.log(error.message))
-
-        console.log(data);
+            .catch(error => console.log(error.message));
         reset();
     };
+
+    //Reset Pass
+    const handleReset = () => {
+        console.log("OnClick: ", userEmail);
+        resetPassword(userEmail)
+            .then(() => {
+                toast.success('Reset link has been sent, please check email')
+            })
+            .catch(error => toast.error(error.message))
+    }
     return (
         <div className="hero min-h-[90vh] bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -42,6 +50,7 @@ const Login = () => {
                                 placeholder='Email'
                                 {...register("email",
                                     {
+                                        onChange: (event) => {setUserEmail(event.target.value)},
                                         required: "Email Address is required",
                                         pattern: {
                                             value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
@@ -49,9 +58,6 @@ const Login = () => {
                                         }
                                     }
                                 )}
-                                aria-invalid={
-                                    errors.email ? "true" : "false"
-                                }
                             />
                             {errors.email?.type === 'required' && <p role="alert">{errors.email?.message}</p>}
                             {errors.email?.type === 'pattern' && <p role="alert">{errors.email?.message}</p>}
@@ -81,6 +87,14 @@ const Login = () => {
 
                             <input type="submit" className='btn mt-6' value="Login" />
                         </form>
+                        <div className='space-y-1'>
+                            <button
+                                onClick={handleReset}
+                                className='text-xs hover:underline text-gray-400'
+                            >
+                                Forgot password?
+                            </button>
+                        </div>
                         <p className='text-xs'>New to Warehouse? <Link to="/sign-up" className=' text-secondary cursor-pointer'>Create new account</Link></p>
                     </div>
                 </div>

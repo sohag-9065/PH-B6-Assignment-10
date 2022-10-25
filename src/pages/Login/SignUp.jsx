@@ -1,22 +1,55 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
+import imageUpload from '../../js/imageUpload';
 
 const SignUp = () => {
-    const { createUser  } = useContext(AuthContext)
+    const { createUser, updateNameImage, verifyEmail } = useContext(AuthContext);
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
+    
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const onSubmit = data => {
-        const { email, password } = data;
-        // create user 
+        const { name, email, password } = data;
+        const image = data.image[0];
+
+        // 1.Create User 
         createUser(email, password)
-        .then(result => {
-            toast.success('Login Success!');
-            console.log(result);
-        })
-        .catch(error => toast.error(error))
+            .then(() => {
+                //2. Image link Link create 
+                imageUpload(image)
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result.success) {
+                            const img = result.data.url
+                            //3. Update Name
+                            updateNameImage(name, img)
+                                .then(() => {
+                                    toast.success('Name And Img Updated')
+                                    //4. Email verification
+                                    verifyEmail()
+                                        .then(() => {
+                                            toast.success('Please check your email for verification link')
+                                            navigate(from, { replace: true })
+                                        })
+                                        .catch(error => {
+                                            toast.error(error.message)
+                                        })
+                                })
+                                .catch(error => {
+                                    toast.error(error.message)
+                                })
+
+                        }
+                    })
+
+            })
+            .catch(error => toast.error(error));
         reset();
     };
     return (
@@ -39,6 +72,20 @@ const SignUp = () => {
                                 )}
                             />
                             {errors.name?.type === 'required' && <p role="alert">{errors.name?.message}</p>}
+                            <label className="label">
+                                <span className="label-text">Photo</span>
+                            </label>
+                            <input
+                                type="file"
+                                className="input input-bordered mb-1  py-2"
+                                {...register("image",
+                                    {
+                                        required: "Image is required",
+                                    }
+                                )}
+                            />
+                            {errors.image?.type === 'required' && <p role="alert">{errors.image?.message}</p>}
+
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>

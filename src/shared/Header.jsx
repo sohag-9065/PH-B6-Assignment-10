@@ -5,13 +5,17 @@ import { toast } from 'react-toastify';
 import logo from '../assets/code.png'
 import { AuthContext } from '../Context/UserContext';
 import Loading from './Loading';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon , faSun} from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
     const [dark, setDark] = useState(false);
-    const { user, logout, loading } = useContext(AuthContext)
-    if(loading){
+    const { user, logout, loadingUser } = useContext(AuthContext)
+    if (loadingUser) {
         return <Loading></Loading>
     }
+
+    console.log("User  ", user);
 
     const handleLogout = () => {
         logout()
@@ -27,17 +31,42 @@ const Header = () => {
         <li><NavLink to="/blog" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Blog</NavLink></li>
         {
             user ?
-                <li><NavLink  className={({ isActive }) => isActive ? undefined : undefined} onClick={handleLogout} >Sign Out</NavLink></li>
+                <>
+                    {
+                        user.photoURL ?
+                            <>
+                                <div className="dropdown dropdown-hover dropdown-end px-2">
+                                    <div tabIndex={0} className="avatar m-1">
+                                        <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-6">
+                                            <img src={user?.photoURL} alt="" />
+                                        </div>
+                                    </div>
+                                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                        <li ><Link className="w-full">{user?.displayName}</Link></li>
+                                        <li> <Link onClick={handleLogout} className="w-full" >Sign Out</Link></li>
+                                    </ul>
+                                </div>
+                            </>
+                            :
+                            <>
+                                <li> <NavLink className={({ isActive }) => isActive ? undefined : undefined} onClick={handleLogout} >Sign Out</NavLink></li>
+                            </>
+                    }
+                </>
                 :
                 <li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Login</NavLink></li>
-        }<li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Login</NavLink></li>
+        }
         {
             dark ?
-                <li onClick={() => setDark(!dark)}><button className="btn btn-ghost">Dark</button></li>
+                <div>
+                    
+                    <li onClick={() => setDark(!dark)}><button className="btn btn-outline btn-ghost"><FontAwesomeIcon icon={faMoon} /></button></li>
+                </div>
+
 
                 :
 
-                <li onClick={() => setDark(!dark)}><button className="btn btn-ghost">Light</button></li>
+                <li onClick={() => setDark(!dark)}><button className="btn btn-outline btn-ghost"><FontAwesomeIcon icon={faSun} /></button></li>
         }
 
     </>
