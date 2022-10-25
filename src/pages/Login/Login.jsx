@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useContext} from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/UserContext';
 
 const Login = () => {
-    
+
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+
+    const { signin  } = useContext(AuthContext)
+
+
+
+
+
 
     const onSubmit = data => {
-        // const { email, password } = data;
+        const { email, password } = data;
          
-        console.log(data);
+
+        // signin(email, password)
+        //     .then(result => {
+        //         // toast.success('Login Success!')
+        //         navigate(from, { replace: true })
+        //         console.log(result.user)
+        //     })
+        //     .catch(error => console.log(error.message))
+
+        // console.log(data);
         reset();
     };
     return (

@@ -1,14 +1,27 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/code.png'
 
 const Header = () => {
+    const [dark, setDark] = useState(false);
 
 
     const menuItems = <>
         <li><NavLink to="/home" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Home</NavLink></li>
+        <li><NavLink to="/courses" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Courses</NavLink></li>
+        <li><NavLink to="/faq" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>FAQ</NavLink></li>
         <li><NavLink to="/blog" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Blog</NavLink></li>
         <li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Login</NavLink></li>
+        {
+            dark ?
+            <li onClick={() => setDark(!dark)}><button className="btn btn-ghost">Dark</button></li>
+            
+                :
+                
+                <li onClick={() => setDark(!dark)}><button className="btn btn-ghost">Light</button></li>
+        }
+
     </>
     return (
         <div className="navbar bg-base-100  px-12  py-8">
