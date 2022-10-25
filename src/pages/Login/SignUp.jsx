@@ -2,13 +2,12 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
-    
+const SignUp = () => {
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
 
     const onSubmit = data => {
         // const { email, password } = data;
-         
+
         console.log(data);
         reset();
     };
@@ -18,6 +17,20 @@ const Login = () => {
                 <div className="card flex-shrink-0 w-full min-w-[400px] shadow-2xl bg-base-100">
                     <div className="card-body">
                         <form onSubmit={handleSubmit(onSubmit)} className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input
+                                type="text"
+                                className="input input-bordered mb-1 w-full"
+                                placeholder='Full Name'
+                                {...register("name",
+                                    {
+                                        required: "Full Name is required",
+                                    }
+                                )}
+                            />
+                            {errors.name?.type === 'required' && <p role="alert">{errors.name?.message}</p>}
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
@@ -64,9 +77,9 @@ const Login = () => {
                             {errors.password?.type === 'minLength' && <p role="alert">{errors.password?.message}</p>}
 
 
-                            <input type="submit" className='btn mt-6' value="Login" />
+                            <input type="submit" className='btn mt-6' value="Sign Up" />
                         </form>
-                        <p className='text-xs'>New to Warehouse? <Link to="/sign-up" className=' text-secondary cursor-pointer'>Create new account</Link></p>
+                        <p className='text-xs'>Already have an account? <Link to="/login" className=' text-secondary cursor-pointer'>Please Login</Link></p>
                     </div>
                 </div>
             </div>
@@ -74,4 +87,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
