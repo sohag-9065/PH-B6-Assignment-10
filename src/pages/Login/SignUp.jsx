@@ -1,21 +1,21 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-// import { AuthContext } from '../../UserContext/UserContext';
+import { AuthContext } from '../../Context/UserContext';
 
 const SignUp = () => {
-    // const { createUser  } = useContext(AuthContext)
+    const { createUser  } = useContext(AuthContext)
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
 
     const onSubmit = data => {
         const { email, password } = data;
-        // createUser(email, password)
-        // .then(result => {
-        //   console.log(result.user)
-        // })
-        // .catch(error => console.log(error))
+        createUser(email, password)
+        .then(result => {
+          console.log(result.user)
+        })
+        .catch(error => console.log(error))
 
-        // console.log(data);
+        console.log(data);
         reset();
     };
     return (
