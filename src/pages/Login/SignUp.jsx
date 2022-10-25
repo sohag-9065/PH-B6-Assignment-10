@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
 
 const SignUp = () => {
@@ -9,13 +10,13 @@ const SignUp = () => {
 
     const onSubmit = data => {
         const { email, password } = data;
+        // create user 
         createUser(email, password)
         .then(result => {
-          console.log(result.user)
+            toast.success('Login Success!');
+            console.log(result);
         })
-        .catch(error => console.log(error))
-
-        console.log(data);
+        .catch(error => toast.error(error))
         reset();
     };
     return (

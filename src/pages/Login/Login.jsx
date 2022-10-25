@@ -1,6 +1,7 @@
 import React, { useContext} from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
 
 const Login = () => {
@@ -9,27 +10,21 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
-
     const { signin  } = useContext(AuthContext)
-
-
-
-
-
 
     const onSubmit = data => {
         const { email, password } = data;
          
 
-        // signin(email, password)
-        //     .then(result => {
-        //         // toast.success('Login Success!')
-        //         navigate(from, { replace: true })
-        //         console.log(result.user)
-        //     })
-        //     .catch(error => console.log(error.message))
+        signin(email, password)
+            .then(result => {
+                toast.success('Login Success!')
+                navigate(from, { replace: true })
+                console.log(result.user)
+            })
+            .catch(error => console.log(error.message))
 
-        // console.log(data);
+        console.log(data);
         reset();
     };
     return (

@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import logo from '../assets/code.png'
+import { AuthContext } from '../Context/UserContext';
+import Loading from './Loading';
 
 const Header = () => {
     const [dark, setDark] = useState(false);
+    const { user, logout, loading } = useContext(AuthContext)
+    if(loading){
+        return <Loading></Loading>
+    }
+
+    const handleLogout = () => {
+        logout()
+            .then(toast.warning('User logged out!'))
+            .catch(error => console.log(error))
+    }
 
 
     const menuItems = <>
@@ -12,13 +25,18 @@ const Header = () => {
         <li><NavLink to="/courses" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Courses</NavLink></li>
         <li><NavLink to="/faq" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>FAQ</NavLink></li>
         <li><NavLink to="/blog" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Blog</NavLink></li>
-        <li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Login</NavLink></li>
+        {
+            user ?
+                <li><NavLink  className={({ isActive }) => isActive ? undefined : undefined} onClick={handleLogout} >Sign Out</NavLink></li>
+                :
+                <li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Login</NavLink></li>
+        }<li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Login</NavLink></li>
         {
             dark ?
-            <li onClick={() => setDark(!dark)}><button className="btn btn-ghost">Dark</button></li>
-            
+                <li onClick={() => setDark(!dark)}><button className="btn btn-ghost">Dark</button></li>
+
                 :
-                
+
                 <li onClick={() => setDark(!dark)}><button className="btn btn-ghost">Light</button></li>
         }
 
