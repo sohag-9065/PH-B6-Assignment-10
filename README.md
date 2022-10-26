@@ -14,10 +14,16 @@
         * home
             * header/navbar
             * banner
-       
+            * 3 courses show
+            * contact us section
+        * courses
+            * sidenav
+            * All Courses show
+            * Single course detail after click details button
         * blog
-            * answer for 5 question
-                *
+            * answer for 4 question
+        * faq
+            * answer for 4 question about course
         * login
             * login form
             * registration form
@@ -27,5 +33,7 @@
                 *logout
                 *user name
                 *user photo
+        *Payment otion access for course
+        
         
         

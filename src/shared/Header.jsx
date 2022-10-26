@@ -29,6 +29,7 @@ const Header = () => {
         <li><NavLink to="/home" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Home</NavLink></li>
         <li><NavLink to="/courses" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Courses</NavLink></li>
         <li><NavLink to="/blog" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Blog</NavLink></li>
+        <li><NavLink to="/faq" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>FAQ</NavLink></li>
         {
             user ?
                 <>
@@ -41,7 +42,7 @@ const Header = () => {
                                             <img src={user?.photoURL} alt="" />
                                         </div>
                                     </div>
-                                    <ul tabIndex={0} className="dropdown-content menu  p-2 shadow bg-stone-300 rounded-box w-52">
+                                    <ul tabIndex={0} className="dropdown-content menu   p-2 shadow bg-stone-300 rounded-box w-52">
                                         <li ><Link className="w-full">{user?.displayName}</Link></li>
                                         <li> <Link onClick={handleLogout} className="w-full" >Sign Out</Link></li>
                                     </ul>

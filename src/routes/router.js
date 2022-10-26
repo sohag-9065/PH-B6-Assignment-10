@@ -4,6 +4,7 @@ import Blog from "../pages/Blog/Blog.jsx";
 import AllCourse from "../pages/Courses/AllCourse.jsx";
 import CourseDetail from "../pages/Courses/CourseDetail.jsx";
 import Courses from "../pages/Courses/Courses.jsx";
+import Faq from "../pages/FAQ/Faq.jsx";
 import Home from "../pages/Home/Home.jsx";
 import Login from "../pages/Login/Login.jsx";
 import SignUp from "../pages/Login/SignUp.jsx";
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path: "blog",
+                element: <Blog></Blog>
+            },
+            {
+                path: "faq",
+                element: <Faq></Faq>
+            },
+            {
                 path: "courses",
                 element: <Courses></Courses>,
                 children: [
@@ -53,10 +62,6 @@ const router = createBrowserRouter([
                     <ProtectRoute>
                         <Primium></Primium>
                     </ProtectRoute>
-            },
-            {
-                path: "blog",
-                element: <Blog></Blog>
             },
             {
                 path: "login",
