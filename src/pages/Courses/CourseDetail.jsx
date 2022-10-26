@@ -30,6 +30,7 @@ const CourseDetail = () => {
                 <div className="card-actions justify-start mt-4">
 
                     <Link to={`/primium/${id}`} className="btn btn-outline btn-primary">Get premium access</Link>
+                    <Link to='' className="btn btn-outline btn-primary">Download PDF</Link>
                 </div>
             </div>
         </div>
