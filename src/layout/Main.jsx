@@ -7,9 +7,7 @@ import Header from '../shared/Header';
 export const CoursesContext = createContext([])
 
 const Main = () => {
-
   const allCourses = useLoaderData();
-  // console.log(allCourses);
 
   return (
     <CoursesContext.Provider value={allCourses}>

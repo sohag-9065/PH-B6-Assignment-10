@@ -2,8 +2,6 @@ import   { useEffect, useState } from 'react';
 
 const useImageUpload = imageUrl => {
     const [image, setImage] = useState('');
-
-    console.log("imageUrl: ",imageUrl);
     
     const imagestorageKey = '3582de6481b734f98ff58713b1465520';
 

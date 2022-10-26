@@ -45,10 +45,8 @@ const SignUp = () => {
                                 .catch(error => {
                                     toast.error(error.message)
                                 })
-
                         }
                     })
-
             })
             .catch(error => toast.error(error));
         reset();

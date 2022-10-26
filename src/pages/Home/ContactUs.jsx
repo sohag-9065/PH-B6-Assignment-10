@@ -10,7 +10,7 @@ const ContactUs = () => {
     }
     return (
         <Hero className='bg-slate-300 py-10 mb-20'>
-        <Hero.Content className='w-2/4'>
+        <Hero.Content className='w-11/12 lg:w-2/4'>
 
             <Card className="flex-shrink-0 w-full  shadow-2xl bg-base-100">
                 <Card.Body>

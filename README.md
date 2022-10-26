@@ -7,6 +7,16 @@
 * server side private repo: [click here](https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-sohag-9065)
 
 
+### Technology uses of this site:
+* React
+* React Router Dom
+* Tailwind
+* React-daisyUi
+* Firebase Authentication & Deploy
+* React-hook-form
+* React-Toastify
+* react-fontawesome
+
 
 ### Features of this site:
 * this site contain two partial way:
@@ -15,7 +25,7 @@
             * header/navbar
             * banner
             * 3 courses show
-            * contact us section
+            * contact-us section
         * courses
             * sidenav
             * All Courses show

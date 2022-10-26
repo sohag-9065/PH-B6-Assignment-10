@@ -13,8 +13,6 @@ const ProtectRoute = ({children}) => {
         return <Loading></Loading>
     }
 
-    // console.log("user ",user);
-
     if(!user){
         return <Navigate to="/login" state={{ from : location }} replace></Navigate>
     }

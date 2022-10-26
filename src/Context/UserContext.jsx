@@ -62,42 +62,31 @@ const UserContext = ({ children }) => {
   }
 
    // 7. Google Signin
-
    const signInWithGoogle = () => {
     setLoadingUser(true)
     return signInWithPopup(auth, googleProvider)
   }
 
-
-   // 7. Google Signin
-
+   // 7. Github Signin
    const signInWithGithub = () => {
     setLoadingUser(true)
     return signInWithPopup(auth, githubProvider)
   }
 
   // twitter Sign in 
-
   const signInWithTwitter = () => {
     setLoadingUser(true)
     return signInWithPopup(auth, twitterProvider)
   }
 
-  
-
-  
-
-
   useEffect(() => {
-    //this part will execute once the component is mounted.
+
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      // console.log("loading true");
       setUser(currentUser)
       setLoadingUser(false)
     })
 
     return () => {
-      //this part will execute once the component is unmounted.
       unsubscribe()
     }
   }, [loadingUser])

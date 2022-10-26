@@ -11,8 +11,8 @@ const Login = () => {
     const { signin, resetPassword } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
+
     const from = location.state?.from?.pathname || '/'
-    console.log(userEmail);
 
     const onSubmit = data => {
         const { email, password } = data;
@@ -21,9 +21,8 @@ const Login = () => {
             .then(result => {
                 toast.success('Login Success!');
                 navigate(from, { replace: true });
-                // console.log(result.user);
             })
-            .catch(error => console.log(error.message));
+            .catch(error => toast.error(error.message));
         reset();
     };
 
@@ -37,8 +36,6 @@ const Login = () => {
             .catch(error => toast.error(error.message))
     }
 
-
-    
     return (
         <div className="hero min-h-[90vh] bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">

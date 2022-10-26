@@ -1,15 +1,13 @@
 import React from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const CourseDetail = () => {
-    const { course_id } = useParams();
     const { id, course_name, course_outline, description, img, new_arival, price, Schedule, Starts } = useLoaderData();
 
-    console.log(course_id);
     return (
         <div className="card w-full bg-base-100 shadow-xl pt-4">
-            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" className='w-1/2' /></figure>
-            <div className="card-body mx-40">
+            <figure><img src={img} alt="Shoes" className='w-full md:w-1/2' /></figure>
+            <div className="card-body   lg:mx-40">
                 <h2 className="card-title">
                     <span className='text-primary text-4xl'>{course_name}</span>
                     {

@@ -11,19 +11,17 @@ import { faMoon } from '@fortawesome/free-regular-svg-icons';
 
 const Header = () => {
     const [dark, setDark] = useState(false);
-    const { user, logout, loadingUser } = useContext(AuthContext)
+    const { user, logout, loadingUser } = useContext(AuthContext);
+
     if (loadingUser) {
         return <Loading></Loading>
     }
-
-    console.log("User  ", user);
 
     const handleLogout = () => {
         logout()
             .then(toast.warning('User logged out!'))
             .catch(error => console.log(error))
     }
-
 
     const menuItems = <>
         <li><NavLink to="/home" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Home</NavLink></li>

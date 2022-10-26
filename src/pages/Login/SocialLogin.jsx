@@ -6,7 +6,6 @@ const SocialLogin = ({ from }) => {
     const { signInWithGoogle, signInWithGithub, signInWithTwitter } = useContext(AuthContext);
     const navigate = useNavigate()
 
-
     // Google Signin
     const handleGoogleSignin = () => {
         signInWithGoogle().then(result => {
@@ -16,7 +15,6 @@ const SocialLogin = ({ from }) => {
 
     // twiter: https://fun-code-fa88c.firebaseapp.com/__/auth/handler
     // Barer:  AAAAAAAAAAAAAAAAAAAAAGBtigEAAAAAIwIXShrYCOVrLLvTz4CP1%2BFXReY%3DPsFbgFCdk32AIdfFMy5qE2wPMszlP43JCh2ccOYfNIqo2leBY1
-
     // twiter Signin
     const handleTwiterSignin = () => {
         console.log("object");
