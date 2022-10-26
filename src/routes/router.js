@@ -8,6 +8,10 @@ import Faq from "../pages/FAQ/Faq.jsx";
 import Home from "../pages/Home/Home.jsx";
 import Login from "../pages/Login/Login.jsx";
 import SignUp from "../pages/Login/SignUp.jsx";
+import AboutMe from "../pages/MyProfile/AboutMe.jsx";
+import Education from "../pages/MyProfile/Education.jsx";
+import MyProfile from "../pages/MyProfile/MyProfile.jsx";
+import Technology from "../pages/MyProfile/Technology.jsx";
 import Primium from "../pages/Primium/Primium.jsx";
 import ErrorPage from "../shared/ErrorPage.jsx";
 import ProtectRoute from "./ProtectRoute.jsx";
@@ -62,6 +66,29 @@ const router = createBrowserRouter([
                     <ProtectRoute>
                         <Primium></Primium>
                     </ProtectRoute>
+            },
+            {
+                path: '/my-profile',
+                element: <MyProfile/>,
+                children: [
+                    {
+                        path: '',
+                        element: <AboutMe/>
+                    },
+                    {
+                        path: 'about-me',
+                        element: <AboutMe/>
+                    },
+                    {
+                        path: 'education',
+                        element: <Education/>
+                    },
+                    {
+                        path: 'technology',
+                        element: <Technology/>
+                    }
+                    
+                ]
             },
             {
                 path: "login",

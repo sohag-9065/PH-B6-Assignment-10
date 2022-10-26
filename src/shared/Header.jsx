@@ -6,7 +6,7 @@ import logo from '../assets/code.png'
 import { AuthContext } from '../Context/UserContext';
 import Loading from './Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faSun} from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from '@fortawesome/free-regular-svg-icons';
 
 const Header = () => {
@@ -34,14 +34,15 @@ const Header = () => {
                     {
                         user.photoURL ?
                             <>
-                                <div className="dropdown dropdown-hover dropdown-end px-2 ">
+                                <div className="dropdown  dropdown-end px-2 cursor-pointer">
                                     <div tabIndex={0} className="avatar m-1">
                                         <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-6">
                                             <img src={user?.photoURL} alt="" />
                                         </div>
                                     </div>
-                                    <ul tabIndex={0} className="dropdown-content menu   p-2 shadow bg-stone-300 rounded-box w-52">
-                                        <li ><Link className="w-full">{user?.displayName}</Link></li>
+                                    <ul tabIndex={0} className="dropdown-content menu mt-2  p-2 shadow bg-stone-300 rounded-box w-52">
+                                        <li><NavLink to="/my-profile" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>{user?.displayName}</NavLink></li>
+                                        
                                         <li> <Link onClick={handleLogout} className="w-full" >Sign Out</Link></li>
                                     </ul>
                                 </div>
@@ -58,7 +59,7 @@ const Header = () => {
         {
             dark ?
                 <div>
-                    
+
                     <li onClick={() => setDark(!dark)}><button className="btn ml-4 text-white"><FontAwesomeIcon icon={faMoon} /></button></li>
                 </div>
 

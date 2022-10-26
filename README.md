@@ -37,7 +37,7 @@
         * login
             * login form
             * registration form
-    * after login:
+    * after login
         * home
             *navbar 
                 *logout
