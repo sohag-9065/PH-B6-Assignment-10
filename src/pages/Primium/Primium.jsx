@@ -13,13 +13,14 @@ const Primium = () => {
     }
 
     return (
-        <div className="hero min-h-[70vh]" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
+        <div className="hero min-h-[70vh] mb-20" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-3xl">
                     <h1 className="mb-5 text-5xl font-bold">{course_name}</h1>
 
                     <p className="mb-5 text-xl"><span className='text-2xl font-semibold text-info'>Price: </span>{price} TK.</p>
+                    <p className="mb-5 text-xl font-semibold">{Starts} TK.</p>
                     <form onSubmit={handleSunmit}>
                         <p>Enter Amount:</p>
                         <Input
@@ -28,7 +29,7 @@ const Primium = () => {
                             className="input-bordered max-wd-md mt-2"
                         />
                         <br />
-                        <input type="submit" value="Confirm Payment" className="btn btn-primary mt-4"/>
+                        <input type="submit" value="Confirm Payment" className="btn btn-info mt-4"/>
                     </form>
                 </div>
             </div>

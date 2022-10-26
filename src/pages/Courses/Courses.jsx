@@ -11,7 +11,7 @@ const Courses = () => {
     // const {id} = allCourses;
     // console.log(allCourses);
     return (
-        <div>
+        <div className='mb-20'>
             <BannerCourses></BannerCourses>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
