@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login.jsx";
 import SignUp from "../pages/Login/SignUp.jsx";
 import Primium from "../pages/Primium/Primium.jsx";
 import ErrorPage from "../shared/ErrorPage.jsx";
+import ProtectRoute from "./ProtectRoute.jsx";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -47,8 +48,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/primium/:id",
-                element: <Primium></Primium>,
-                loader: ({ params }) => fetch(`https://ph-b6-assignmet10-server.vercel.app/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://ph-b6-assignmet10-server.vercel.app/course/${params.id}`),
+                element:
+                    <ProtectRoute>
+                        <Primium></Primium>
+                    </ProtectRoute>
             },
             {
                 path: "blog",
