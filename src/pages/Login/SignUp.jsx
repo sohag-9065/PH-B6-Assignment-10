@@ -75,7 +75,7 @@ const SignUp = () => {
                             />
                             {errors.name?.type === 'required' && <p role="alert">{errors.name?.message}</p>}
                             <label className="label">
-                                <span className="label-text">Photo</span>
+                                <span className="label-text">Chosse Photo</span>
                             </label>
                             <input
                                 type="file"

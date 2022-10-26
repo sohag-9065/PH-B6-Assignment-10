@@ -6,7 +6,8 @@ import logo from '../assets/code.png'
 import { AuthContext } from '../Context/UserContext';
 import Loading from './Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon , faSun} from "@fortawesome/free-solid-svg-icons";
+import {  faSun} from "@fortawesome/free-solid-svg-icons";
+import { faMoon } from '@fortawesome/free-regular-svg-icons';
 
 const Header = () => {
     const [dark, setDark] = useState(false);
@@ -59,7 +60,7 @@ const Header = () => {
             dark ?
                 <div>
                     
-                    <li onClick={() => setDark(!dark)}><button className="btn btn-outline btn-ghost ml-4"><FontAwesomeIcon icon={faMoon} /></button></li>
+                    <li onClick={() => setDark(!dark)}><button className="btn ml-4 text-white"><FontAwesomeIcon icon={faMoon} /></button></li>
                 </div>
 
                 :

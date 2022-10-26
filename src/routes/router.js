@@ -1,4 +1,5 @@
 import Main from "../layout/Main.jsx";
+import { coursesData } from "../loaders/getCoursesData.js";
 import Blog from "../pages/Blog/Blog.jsx";
 import Courses from "../pages/Courses/Courses.jsx";
 import Home from "../pages/Home/Home.jsx";
@@ -13,8 +14,9 @@ const { createBrowserRouter } = require("react-router-dom");
 const router =  createBrowserRouter([
     {
         path: "/",
-        errorElement: <ErrorPage></ErrorPage>,
         element: <Main></Main>,
+        loader: coursesData,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
