@@ -19,7 +19,7 @@ const Header = () => {
 
     const handleLogout = () => {
         logout()
-            .then(toast.warning('User logged out!'))
+            .then(toast.warning('User logged out!', { autoClose: 1000 }))
             .catch(error => console.log(error))
     }
 

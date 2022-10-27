@@ -3,16 +3,21 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
+import Loading from '../../shared/Loading';
 import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const [userEmail, setUserEmail] = useState('')
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
-    const { signin, resetPassword } = useContext(AuthContext)
+    const { signin, resetPassword, loadingUser} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
 
     const from = location.state?.from?.pathname || '/'
+
+    if (loadingUser) {
+        return <Loading></Loading>
+    }
 
     const onSubmit = data => {
         const { email, password } = data;
