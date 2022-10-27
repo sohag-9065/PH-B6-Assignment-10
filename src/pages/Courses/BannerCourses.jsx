@@ -2,7 +2,7 @@ import React from 'react';
 
 const BannerCourses = () => {
     return (
-        <div className="hidden lg:block p-6 py-12 bg-gradient-to-r from-green-400 to-blue-500">
+        <div className="hidden lg:block p-6 py-12 bg-gradient-to-r from-green-400 to-blue-500  dark:text-gray-100">
             <div className="container mx-auto">
                 <div className="flex flex-col lg:flex-row items-center justify-between">
 

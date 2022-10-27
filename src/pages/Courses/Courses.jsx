@@ -8,7 +8,7 @@ const Courses = () => {
     const { allCourses } = useContext(CoursesContext);
 
     return (
-        <div className='mb-20 scroll-smooth'>
+        <div className='pb-20 scroll-smooth dark:bg-gray-800 dark:text-gray-100'>
             <BannerCourses></BannerCourses>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -20,7 +20,7 @@ const Courses = () => {
                 </div>
                 <div className="drawer-side ">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 overflow-y-auto w-80 bg-slate-400 text-base-content space-y-4 ">
+                    <ul className="menu p-4 overflow-y-auto w-80 bg-slate-400 text-base-content space-y-4 dark:bg-gray-800 dark:text-gray-100">
                         {
                             allCourses.map((course, index)=><li key={index}><NavLink to={`course-detail/${course.id}`} className={({ isActive }) => isActive ? "btn bg-[#3A4256] text-white" : "btn btn-outline"}>{course.course_name}</NavLink></li>)
                             

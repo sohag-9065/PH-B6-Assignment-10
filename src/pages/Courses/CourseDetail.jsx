@@ -5,7 +5,7 @@ const CourseDetail = () => {
     const { id, course_name, course_outline, description, img, new_arival, price, Schedule, Starts } = useLoaderData();
 
     return (
-        <div className="card w-full bg-base-100 shadow-xl pt-4">
+        <div className="card w-full bg-base-100 shadow-xl pt-4 dark:bg-gray-800 dark:text-gray-100">
             <figure><img src={img} alt="Shoes" className='w-full md:w-1/2' /></figure>
             <div className="card-body   lg:mx-40">
                 <h2 className="card-title">

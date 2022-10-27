@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
 
 const SocialLogin = ({ from }) => {
@@ -9,6 +10,7 @@ const SocialLogin = ({ from }) => {
     // Google Signin
     const handleGoogleSignin = () => {
         signInWithGoogle().then(result => {
+            toast.success('Login Success!', { autoClose: 1000 });
             navigate(from, { replace: true })
         })
     }
@@ -19,6 +21,7 @@ const SocialLogin = ({ from }) => {
     const handleTwiterSignin = () => {
         console.log("object");
         signInWithTwitter().then(result => {
+            toast.success('Login Success!', { autoClose: 1000 });
             navigate(from, { replace: true })
         })
     }
@@ -27,6 +30,7 @@ const SocialLogin = ({ from }) => {
     const handleGithubSignin = () => {
         console.log("object");
         signInWithGithub().then(result => {
+            toast.success('Login Success!', { autoClose: 1000 });
             navigate(from, { replace: true })
         })
     }

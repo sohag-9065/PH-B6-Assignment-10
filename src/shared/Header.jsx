@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from '../assets/code.png'
@@ -8,10 +7,11 @@ import Loading from './Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from '@fortawesome/free-regular-svg-icons';
+import { DarkContext } from '../layout/Main';
 
 const Header = () => {
-    const [dark, setDark] = useState(false);
     const { user, logout, loadingUser } = useContext(AuthContext);
+    const [darkModeOn, setDrkModeOn] = useContext(DarkContext);
 
     if (loadingUser) {
         return <Loading></Loading>
@@ -42,7 +42,7 @@ const Header = () => {
                                     </div>
                                     <ul tabIndex={0} className="dropdown-content menu mt-2  p-2 shadow bg-stone-300 rounded-box w-52">
                                         <li><NavLink to="/my-profile" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>{user?.displayName}</NavLink></li>
-                                        
+
                                         <li> <Link onClick={handleLogout} className="w-full" >Sign Out</Link></li>
                                     </ul>
                                 </div>
@@ -57,19 +57,15 @@ const Header = () => {
                 <li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>Login</NavLink></li>
         }
         {
-            dark ?
-                <div>
-
-                    <li onClick={() => setDark(!dark)}><button className="btn ml-4 text-white"><FontAwesomeIcon icon={faMoon} /></button></li>
-                </div>
-
+            darkModeOn ?
+                <li onClick={() => setDrkModeOn(!darkModeOn)}><button className="btn ml-4 text-white"><FontAwesomeIcon icon={faMoon} /></button></li>
                 :
-                <li onClick={() => setDark(!dark)}><button className="btn btn-outline btn-ghost ml-4"><FontAwesomeIcon icon={faSun} /></button></li>
+                <li onClick={() => setDrkModeOn(!darkModeOn)}><button className="btn btn-outline btn-ghost ml-4"><FontAwesomeIcon icon={faSun} /></button></li>
         }
 
     </>
     return (
-        <div className="navbar bg-base-100  px-12  py-8">
+        <div className="navbar bg-base-100 px-12 py-8 dark:bg-gray-800 dark:text-gray-100 ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -18,18 +18,18 @@ const Primium = () => {
         const input_value = event.target.amount.value;
         if (input_value === price) {
             event.target.reset();
-            toast.success("Payment Sucessfully");
+            toast.success("Payment Sucessfully", { autoClose: 1000 }); 
         }
         else {
-            toast.error("Wront Amount! Please Correct amount");
+            toast.error("Wront Amount! Please Correct amount", { autoClose: 1000 });
         }
     }
 
     return (
 
-        <div className="hero min-h-[70vh] mb-20" >
+        <div className="hero min-h-[70vh] pb-20 dark:bg-gray-800 dark:text-gray-100 py-10" >
             <div className="hero-overlay bg-opacity-60"></div>
-            <div className="hero-content text-start text-neutral-content">
+            <div className="hero-content text-start text-neutral-content ">
                 <div className="max-w-3xl">
                     <h1 className="mb-5 text-5xl font-bold">{course_name}</h1>
                     <h1 className='font-bold text-xl'>About you</h1>
@@ -38,7 +38,7 @@ const Primium = () => {
                    <div className="w-12 rounded-full ring ring-info ring-offset-base-100 ring-offset-6">
                         <img src={user?.photoURL} alt="" className='rounded-full'/>
                     </div>
-                    <p className='ml-3 text-2xl text-indigo-700'>{user?.displayName}</p>
+                    <p className='ml-3 text-2xl text-indigo-500'>{user?.displayName}</p>
                    </div>
                      
 

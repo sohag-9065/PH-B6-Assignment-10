@@ -6,10 +6,10 @@ const ContactUs = () => {
     const handleSunmit = event => {
         event.preventDefault();
         event.target.reset();
-        toast.success("Message Send Sucessfully")
+        toast.success("Message Send Sucessfully", { autoClose: 1000 })
     }
     return (
-        <Hero className='bg-slate-300 py-10 mb-20'>
+        <Hero className='bg-slate-300 dark:bg-gray-800 dark:text-gray-100 py-10 '>
         <Hero.Content className='w-11/12 lg:w-2/4'>
 
             <Card className="flex-shrink-0 w-full  shadow-2xl bg-base-100">

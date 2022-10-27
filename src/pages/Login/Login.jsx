@@ -19,7 +19,7 @@ const Login = () => {
         // sign in user with email and pass 
         signin(email, password)
             .then(result => {
-                toast.success('Login Success!');
+                toast.success('Login Success!', { autoClose: 1000 });
                 navigate(from, { replace: true });
             })
             .catch(error => toast.error(error.message));
@@ -31,7 +31,7 @@ const Login = () => {
         console.log("OnClick: ", userEmail);
         resetPassword(userEmail)
             .then(() => {
-                toast.success('Reset link has been sent, please check email')
+                toast.success('Reset link has been sent, please check email', { autoClose: 1000 })
             })
             .catch(error => toast.error(error.message))
     }

@@ -4,7 +4,7 @@ import code from '../assets/code.png'
 
 const FooterSection = () => {
     return (
-        <footer className="footer footer-center p-10 bg-stone-400 text-primary-content">
+        <footer className="footer footer-center p-10 bg-stone-400 text-primary-content dark:bg-gray-800 dark:text-gray-100">
             <div>
                <img src={code} alt=""  className='w-20 rounded-full'/>
                 <p className="font-bold text-xl">

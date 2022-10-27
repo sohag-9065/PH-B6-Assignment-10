@@ -2,10 +2,10 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='mx-12 space-y-10 mb-20'>
-            <div className="hero min-h-[60vh] bg-base-200">
+        <div className='px-12 space-y-10 pb-12 dark:bg-gray-800 dark:text-gray-100'>
+            <div className="hero min-h-[60vh] bg-base-200 dark:bg-gray-800 dark:text-gray-100">
                 <div className="hero-content flex-col lg:flex-row ">
-                    <img src="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/cors_principle.png" className="max-w-md rounded-lg shadow-2xl" alt=''/>
+                    <img src="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/cors_principle.png" className="max-w-md rounded-lg shadow-2xl bg-base-200" alt=''/>
                     <div className='space-y-4'>
                         <h1 className="text-3xl font-bold">Cross-origin resource sharing (CORS)</h1>
                         <p className=" ">Cross-origin resource sharing (CORS) is a browser mechanism which enables controlled access to resources located outside of a given domain. </p>
@@ -14,7 +14,7 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
-            <div className="hero min-h-[60vh] bg-base-200">
+            <div className="hero min-h-[60vh] bg-base-200 dark:bg-gray-800 dark:text-gray-100">
                 <div className="hero-content flex-col lg:flex-row ">
                     <img src="https://www.tristatetechnology.com/tristate-website/blog/wp-content/uploads/2019/06/firebase11.jpg" className="max-w-md rounded-lg shadow-2xl" alt=''/>
                     <div className='space-y-4'>
@@ -26,7 +26,7 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
-            <div className="hero min-h-[60vh] bg-base-200">
+            <div className="hero min-h-[60vh] bg-base-200 dark:bg-gray-800 dark:text-gray-100">
                 <div className="hero-content flex-col lg:flex-row ">
                     <img src="https://cdn-images-1.medium.com/max/641/1*mJpDhhE-fOLnPzQhpKin4w.png" className="max-w-md rounded-lg shadow-2xl" alt=''/>
                     <div className='space-y-4'>
@@ -36,7 +36,7 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
-            <div className="hero min-h-[60vh] bg-base-200">
+            <div className="hero min-h-[60vh] bg-base-200 dark:bg-gray-800 dark:text-gray-100">
                 <div className="hero-content flex-col lg:flex-row ">
                     <img src="https://miro.medium.com/max/632/1*xsQYYYvG-07C3lAYcTvuRA.png" className="max-w-md rounded-lg shadow-2xl" alt=''/>
                     <div className='space-y-4'>

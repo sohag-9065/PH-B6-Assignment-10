@@ -31,11 +31,11 @@ const SignUp = () => {
                             //3. Update Name
                             updateNameImage(name, img)
                                 .then(() => {
-                                    toast.success('Name And Img Updated')
+                                    toast.success('Name And Img Updated', { autoClose: 1000 })
                                     //4. Email verification
                                     verifyEmail()
                                         .then(() => {
-                                            toast.success('Please check your email for verification link')
+                                            toast.success('Please check your email for verification link', { autoClose: 1000 })
                                             navigate(from, { replace: true })
                                         })
                                         .catch(error => {
