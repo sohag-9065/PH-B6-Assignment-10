@@ -1,24 +1,31 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/UserContext';
 import imageUpload from '../../js/imageUpload';
+import Loading from '../../shared/Loading';
 import SocialLogin from './SocialLogin';
 
 const SignUp = () => {
     const { createUser, updateNameImage, verifyEmail } = useContext(AuthContext);
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
+    const [loadingUser, setLoadingUser] = useState(false);
     
     const navigate = useNavigate();
     const location = useLocation();
+
+    if (loadingUser) {
+        return <Loading></Loading>
+    }
 
     const from = location.state?.from?.pathname || '/';
 
     const onSubmit = data => {
         const { name, email, password } = data;
         const image = data.image[0];
-
+        setLoadingUser(true)
         // 1.Create User 
         createUser(email, password)
             .then(() => {
@@ -36,9 +43,11 @@ const SignUp = () => {
                                     verifyEmail()
                                         .then(() => {
                                             toast.success('Please check your email for verification link', { autoClose: 1000 })
+                                            setLoadingUser(false);
                                             navigate(from, { replace: true })
                                         })
                                         .catch(error => {
+                                            setLoadingUser(false);
                                             toast.error(error.message)
                                         })
                                 })
@@ -47,8 +56,12 @@ const SignUp = () => {
                                 })
                         }
                     })
+                    
             })
-            .catch(error => toast.error(error));
+            .catch(error => {
+                toast.error(error);
+                setLoadingUser(false);
+            });
         reset();
     };
     return (

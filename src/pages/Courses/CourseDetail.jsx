@@ -11,7 +11,7 @@ const CourseDetail = () => {
             <div className="card max-w-2xl mx-auto bg-base-100 mb-4 shadow-xl pt-4 dark:bg-gray-800 dark:text-gray-100">
                 <div ref={ref}>
                     <figure><img src={img} alt="Shoes" className='w-full ' /></figure>
-                    <div className="card-body  ">
+                    <div className="card-body text-black ">
                         <div className="">
                             <h2 className="card-title">
                                 <span className='text-primary text-4xl'>{course_name}</span>
